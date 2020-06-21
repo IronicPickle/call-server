@@ -1,0 +1,57 @@
+{
+  "name": "elite-community-website",
+  "version": "1.0.0",
+  "description": "Elite: Dangerous Squadron Management Website",
+  "main": "./build/app.js",
+  "scripts": {
+    "clean": "echo Clearing current build... && rm -rf ./build",
+    "compile:typescript": "echo Compiling TypeScript... && tsc --build",
+    "build": "npm run clean && npm run compile:typescript",
+    "prepare": "echo Preparing build... && npm run build",
+    "dev": "nodemon",
+    "prod": "clear && cross-env NODE_ENV=production node ./build/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IronicPickle/elite-community-website.git"
+  },
+  "author": "IronicPickle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IronicPickle/elite-community-website/issues"
+  },
+  "homepage": "https://github.com/IronicPickle/elite-community-website#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cron": "^1.8.2",
+    "cross-env": "^6.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "twilio": "^3.46.0",
+    "typescript": "^3.6.4"
+  },
+  "devDependencies": {
+    "@types/cron": "^1.7.2",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^4.17.1",
+    "@types/node": "^12.11.1",
+    "@types/request": "^2.48.4",
+    "@types/request-promise": "^4.1.45",
+    "@types/twilio": "^2.11.0",
+    "nodemon": "^1.19.4",
+    "ts-node": "^8.4.1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "node_modules",
+      "client"
+    ],
+    "watch": [
+      "src/**/*"
+    ],
+    "ext": "ts json",
+    "exec": "clear && cross-env NODE_ENV=development ts-node -T ./src/app.ts"
+  }
+}
